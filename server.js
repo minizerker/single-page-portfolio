@@ -55,9 +55,8 @@ app.post('/api/payload', (req, res) => {
   console.log('pulling from Github...');
 
   exec('git -C ~/heathenstudios pull -f', execCallback);
-  exec('npm -C ~/heathenstudios install --production', execCallback);
-  exec('npm -C ~/heathenstudios/client install --production', execCallback);
   exec('npm -C ~/heathenstudios/client run build', execCallback);
+  exec('npm -C ~/heathenstudios install --production', execCallback);
 })
 
 function execCallback(err, stdout, stderr) {
