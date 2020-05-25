@@ -80,13 +80,13 @@ app.post('/api/send', (req, res) => {
     })
     let mailoptions={
         from: `${data.email}`,
-        to: 'tsdfaux@gmail.com',
+        to: '<email address>',
         subject: `Portfolio Email Contact: ${data.name}`,
         html:`<ul><li>${data.name}</li><li>${data.email}</li></ul><p>${data.msg}</p>`,
     }
 
     let autoReply={
-        from: "contact@heathenstudios.co.uk",
+        from: "<email address>",
         to: `${data.email}`,
         subject: 'Submission was successful',
         html: `<p>Thank you for contacting me!</p><p>I will be in touch within 3-5 working days. Please see your submission below:</p><p><ul><li>Name: ${data.name}</li><li>Email: ${data.email}</li><li>Message: ${data.msg}</li></ul></p><br /><p>Kind regards,</p>Iain @ Heathen`,
