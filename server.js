@@ -16,8 +16,10 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors());
 
+var uri = 'mongodb+srv://' + creds.mUSER + ':' + creds.mPASS + "@" + creds.mDBNAME;
+
 mongoose
-  .connect('mongodb+srv://<dbuserName>:<dbPass>@<dbContainer>', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+  .connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
   .then(console.log("MongoDB Connection: Successful."))
   .catch(err => (console.log(err)));
 
@@ -66,8 +68,8 @@ app.post('/api/send', (req, res) => {
         service: 'gmail',
         port: 587,
         auth:{
-            user: creds.USER,
-            pass: creds.PASS
+            user: creds.nmUSER,
+            pass: creds.nmPASS
         }
     })
 
@@ -80,13 +82,13 @@ app.post('/api/send', (req, res) => {
     })
     let mailoptions={
         from: `${data.email}`,
-        to: '<email address>',
+        to: `${creds.nmTO}`,
         subject: `Portfolio Email Contact: ${data.name}`,
         html:`<ul><li>${data.name}</li><li>${data.email}</li></ul><p>${data.msg}</p>`,
     }
 
     let autoReply={
-        from: "<email address>",
+        from: `${creds.nmFROM}`,
         to: `${data.email}`,
         subject: 'Submission was successful',
         html: `<p>Thank you for contacting me!</p><p>I will be in touch within 3-5 working days. Please see your submission below:</p><p><ul><li>Name: ${data.name}</li><li>Email: ${data.email}</li><li>Message: ${data.msg}</li></ul></p><br /><p>Kind regards,</p>`,
@@ -98,7 +100,7 @@ app.post('/api/send', (req, res) => {
         } else {
             res.send('Success')
             smtpTransport.sendMail({
-                from: "<email address>",
+                from: `${creds.nmFROM}`,
                 to: `${data.email}`,
                 subject: "Submission was successful",
                 text: `Thank you for contacting me!\n\nI will be in touch within 3-5 working days. \nName: ${data.name}\n Email: ${data.email}\n Message: ${data.msg}`
