@@ -60,6 +60,11 @@ app.post('/api/payload', (req, res) => {
   exec('npm -C ~/heathenstudios/client run build', execCallback);
 })
 
+function execCallback(err, stdout, stderr) {
+  if(stdout) console.log(stdout);
+  if(stderr) console.log(stderr);
+}
+
 app.post('/api/send', (req, res) => {
     let data = req.body
     let smtpTransport = nodemailer.createTransport({
