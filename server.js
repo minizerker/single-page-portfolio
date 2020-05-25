@@ -8,7 +8,7 @@ const session = require('express-session');
 const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
-const exec = require('child_process');
+const { exec } = require('child_process');
 
 const app = express();
 app.use(bodyparser.json());
