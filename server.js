@@ -52,12 +52,12 @@ app.post('/payload', (req, res) => {
 
   console.log('Cleaning then pulling from Github...');
 
-  exec('git -C ~/livesite reset --hard', execCallback);
-  exec('git -C ~/livesite clean -df', execCallback);
-  exec('git -C ~/livesite pull -f', execCallback);
-  exec('npm -C ~/livesite install --production', execCallback);
-  exec('npm -C ~/livesite/client install --production', execCallback);
-  exec('npm -C ~/livesite/client run build', execCallback);
+  exec('git -C ~/heathenstudios reset --hard', execCallback);
+  exec('git -C ~/heathenstudios clean -df', execCallback);
+  exec('git -C ~/heathenstudios pull -f', execCallback);
+  exec('npm -C ~/heathenstudios install --production', execCallback);
+  exec('npm -C ~/heathenstudios/client install --production', execCallback);
+  exec('npm -C ~/heathenstudios/client run build', execCallback);
 })
 
 app.post('/api/send', (req, res) => {
@@ -89,7 +89,7 @@ app.post('/api/send', (req, res) => {
         from: "<email address>",
         to: `${data.email}`,
         subject: 'Submission was successful',
-        html: `<p>Thank you for contacting me!</p><p>I will be in touch within 3-5 working days. Please see your submission below:</p><p><ul><li>Name: ${data.name}</li><li>Email: ${data.email}</li><li>Message: ${data.msg}</li></ul></p><br /><p>Kind regards,</p>Iain @ Heathen`,
+        html: `<p>Thank you for contacting me!</p><p>I will be in touch within 3-5 working days. Please see your submission below:</p><p><ul><li>Name: ${data.name}</li><li>Email: ${data.email}</li><li>Message: ${data.msg}</li></ul></p><br /><p>Kind regards,</p>`,
     }
 
     smtpTransport.sendMail(mailoptions, (error, response) => {
@@ -98,7 +98,7 @@ app.post('/api/send', (req, res) => {
         } else {
             res.send('Success')
             smtpTransport.sendMail({
-                from: "contact@heathenstudios.co.uk",
+                from: "<email address>",
                 to: `${data.email}`,
                 subject: "Submission was successful",
                 text: `Thank you for contacting me!\n\nI will be in touch within 3-5 working days. \nName: ${data.name}\n Email: ${data.email}\n Message: ${data.msg}`
