@@ -37,8 +37,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.listen(5001, () => {
-  console.log('Running on port: 5001');
+app.listen(3001, () => {
+  console.log('Running on port: 3001');
   });
 
 
@@ -52,7 +52,7 @@ app.get('/*', function(req, res) {
 app.post('/payload', (req, res) => {
   console.log(req.body.pusher.name + ' just pushed to ' + req.body.repository.name);
 
-  console.log('Cleaning then pulling from Github...');
+  console.log('pulling from Github...');
 
   exec('git -C ~/heathenstudios pull -f', execCallback);
   exec('npm -C ~/heathenstudios install --production', execCallback);
