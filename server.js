@@ -49,7 +49,7 @@ app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 
-app.post('/payload', (req, res) => {
+app.post('/api/payload', (req, res) => {
   console.log(req.body.pusher.name + ' just pushed to ' + req.body.repository.name);
 
   console.log('pulling from Github...');
