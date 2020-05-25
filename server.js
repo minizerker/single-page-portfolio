@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors());
 
 mongoose
-  .connect('mongodb+srv://dbManager:dbManagerexe@cluster0-7rmtb.gcp.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+  .connect('mongodb+srv://<dbuserName>:<dbPass>@<dbContainer>', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
   .then(console.log("MongoDB Connection: Successful."))
   .catch(err => (console.log(err)));
 
