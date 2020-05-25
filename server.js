@@ -52,9 +52,9 @@ app.post('/payload', (req, res) => {
 
   console.log('Cleaning then pulling from Github...');
 
-  exec('git -C ~/ivesite reset --hard', execCallback);
+  exec('git -C ~/livesite reset --hard', execCallback);
   exec('git -C ~/livesite clean -df', execCallback);
-  exec('git -C ~livesite pull -f', execCallback);
+  exec('git -C ~/livesite pull -f', execCallback);
   exec('npm -C ~/livesite install --production', execCallback);
   exec('npm -C ~/livesite/client install --production', execCallback);
   exec('npm -C ~/livesite/client run build', execCallback);
