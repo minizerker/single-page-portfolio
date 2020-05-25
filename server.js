@@ -54,8 +54,6 @@ app.post('/payload', (req, res) => {
 
   console.log('Cleaning then pulling from Github...');
 
-  exec('git -C ~/heathenstudios reset --hard', execCallback);
-  exec('git -C ~/heathenstudios clean -df', execCallback);
   exec('git -C ~/heathenstudios pull -f', execCallback);
   exec('npm -C ~/heathenstudios install --production', execCallback);
   exec('npm -C ~/heathenstudios/client install --production', execCallback);
