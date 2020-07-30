@@ -25,7 +25,7 @@ mongoose
 
 
 app.use(session({
-  secret: "super very secret 42",
+  secret: creds.sessSECRET,
   resave: false,
   saveUninitialized: true,
   store: new MongoStore({mongooseConnection: mongoose.connection})
@@ -45,10 +45,38 @@ app.listen(3001, () => {
 
 
 //define routes
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
+app.get('/druid/*', function(req, res) {
+  res.sendFile(path.join(__dirname, './project-druid/build', 'index.html'))
+});
 
+app.get('/archer/*', function(req, res) {
+  res.sendFile(path.join(__dirname, './project-archer/client/build', 'index.html'))
+});
+
+app.get('/rogue/*', function(req, res) {
+  res.sendFile(path.join(__dirname, './project-rogue/build', 'index.html'))
+});
+
+app.get('/cleric/*', function(req, res) {
+  res.sendFile(path.join(__dirname, './project-clericv2/build', 'index.html'))
+});
+
+app.get('/barbarian/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'project-barbarian/client/build', 'index.html'))
+});
+
+app.get('/sorceror/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'project-sorceror/build', 'index.html'))
+});
+
+
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
+
+  //GitHub CI setup
 app.post('/api/payload', (req, res) => {
   console.log(req.body.pusher.name + ' just pushed to ' + req.body.repository.name);
 

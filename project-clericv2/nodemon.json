@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_USER": "tsdfaux",
+        "MONGO_PASSWORD": "5uperninja",
+        "STRIPE_KEY": "sk_test_T8OE02SHDZWLwk4TYtrWlsat"
+    }
+}
