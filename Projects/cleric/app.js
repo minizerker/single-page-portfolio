@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-const https = require('https');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -19,7 +18,7 @@ const shopController = require('./controllers/shop');
 const isAuth = require('./middleware/is-auth');
 const User = require('./models/user');
 
-const MONGODB_URI = `mongodb+srv://tsdfaux:5uperninja@cluster0-ltlxp.mongodb.net/test?retryWrites=true&w=majority`;
+const MONGODB_URI = `mongodb+srv://dbManager:dbManagerexe@cluster0-7rmtb.gcp.mongodb.net/cleric?retryWrites=true&w=majority`;
 
 const app = express();
 const store = new MongoDBStore({
@@ -137,10 +136,8 @@ app.use((error, req, res, next) => {
 mongoose
   .connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(result => {
-    // https
-    //   .createServer({ key: privateKey, cert: certificate }, app)
-    //   .listen(process.env.PORT || 3000);
-      app.listen(process.env.PORT || 3000);
+      app.listen(process.env.PORT || 3003);
+      console.log("running on 3003");
   })
   .catch(err => {
     console.log(err);

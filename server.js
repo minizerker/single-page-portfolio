@@ -46,34 +46,34 @@ app.listen(3001, () => {
 
 //define routes
 app.get('/druid/*', function(req, res) {
-  res.sendFile(path.join(__dirname, './project-druid/build', 'index.html'))
+  res.sendFile(path.join(__dirname, './Projects/druid/build', 'index.html'))
 });
 
 app.get('/archer/*', function(req, res) {
-  res.sendFile(path.join(__dirname, './project-archer/client/build', 'index.html'))
+  res.sendFile(path.join(__dirname, './Projects/archer/client/build', 'index.html'))
 });
 
 app.get('/rogue/*', function(req, res) {
-  res.sendFile(path.join(__dirname, './project-rogue/build', 'index.html'))
+  res.sendFile(path.join(__dirname, './Projects/rogue/build', 'index.html'))
 });
 
 app.get('/cleric/*', function(req, res) {
-  res.sendFile(path.join(__dirname, './project-clericv2/build', 'index.html'))
+  res.sendFile(path.join(__dirname, './Projects/cleric', '/'))
 });
 
 app.get('/barbarian/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'project-barbarian/client/build', 'index.html'))
+  res.sendFile(path.join(__dirname, './Projects/barbarian/client/build', 'index.html'))
 });
 
 app.get('/sorceror/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'project-sorceror/build', 'index.html'))
+  res.sendFile(path.join(__dirname, './Projects/sorceror/build', 'index.html'))
 });
 
-
-
-app.get('/*', function(req, res) {
+app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
+
+
 
 
   //GitHub CI setup
