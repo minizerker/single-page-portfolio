@@ -78,13 +78,11 @@ app.get('/', function(req, res) {
 
   //GitHub CI setup
 app.post('/api/payload', (req, res) => {
-  console.log(req.body.pusher.name + ' just pushed to ' + req.body.repository.name);
-
   console.log('pulling from Github...');
-
   exec('git -C ~/heathenstudios pull -f', execCallback);
-  exec('npm -C ~/heathenstudios/client run build', execCallback);
   exec('npm -C ~/heathenstudios install --production', execCallback);
+  exec('npm -C ~/heathenstudios/client run build', execCallback);
+
 })
 
 function execCallback(err, stdout, stderr) {
